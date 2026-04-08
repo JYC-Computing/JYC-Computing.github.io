@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background-image: url(img/bji.jpg);
+        }
+        .box{
+            overflow: hidden;
+            margin: 100px 150px;
+            width: 340px;
+            height: 660px;
+            background-color: green;
+            border-radius: 20px;
+
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 1700px;
+            height: 660px;
+            background-color: rgb(116, 6, 146);
+            animation: move 6s infinite linear;
+        }
+        li{
+            width: 340px;
+            height: 660px;
+            float: left;
+        }
+        img{
+            width: 340px;
+            height: 660px;
+        }
+        @keyframes move{
+            to{
+                transform: translateX(-80%);
+
+            }
+        }
+        ul:hover{
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="img/01.JPG" alt=""></li>
+            <li><img src="img/2.JPG" alt=""></li>
+            <li><img src="img/3.JPG" alt=""></li>
+            <li><img src="img/4.JPG" alt=""></li>
+            <li><img src="img/01.JPG" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background: url(img/bgi.jpg);
+        }
+        ul{
+            margin: 100px 100px;
+            width: 1000px;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            overflow: hidden;
+            position: relative;
+            float: left;
+            margin-right: 100px;
+            width: 400px;
+            height: 600px;
+            background-color: palegreen;
+            background-size: cover;
+        }
+        img{
+            width: 400px;
+            height: 600px;
+        }
+        .cover{
+            position: absolute;
+            top:0;
+            left: 0;
+            transform: rotate(90deg);
+            transform-origin: right bottom;
+            width: 400px;
+            height: 600px;
+            background-color: rgba(198, 43, 226, 0.5);
+            transition: 0.5s;
+        }
+        p{
+            letter-spacing: 1px;
+            line-height: 50px;
+            margin: 0;
+            color: aliceblue;
+            padding: 30px;
+            text-indent: 38px;
+            font-size: 18px;
+        }
+        li:hover .cover{
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li class="l1">
+                <img src="img/1.jpg" alt="">
+                <div class="cover">
+                    <p>桔梗，战国时代灵力数一数二的巫女，负责守护及净化四魂之玉，以强大的 灵力与精准的箭术击退对玉虎视眈眈的妖怪们 ，是犬夜叉最心爱的女子之一。后来桔梗被暗恋者鬼蜘蛛所嫉妒。鬼蜘蛛托生的半妖奈落设计使二人反目成仇。重伤的桔梗忍痛将携玉逃跑的犬夜叉封印，随后带玉身亡。 </p>
+                </div>
+            </li>
+            <li class="l2">
+                <img src="img/2.png" alt="">
+                <div class="cover">
+                    <p>犬夜叉,是大妖怪犬大将与人类公主十六夜所生的半妖，
+                        因为半妖身份而被人类和妖怪所排斥，为此犬夜叉想通过四魂之玉的力量使自己变成完全的妖怪，
+                        后在争夺四魂之玉中爱上了人类女子桔梗而想变成人类，后来被奈落使用离间计陷害，
+                        与桔梗反目成仇，在盗取四魂之玉时，被桔梗封印五十年，桔梗带玉身亡</p>
+                </div>
+            </li>
+        </ul>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+</html>

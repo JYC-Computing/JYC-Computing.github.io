@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background-image: url(img/bg.png);
+        }
+        div{
+            position: fixed;
+            overflow: hidden;
+            top: 460px;
+            left: 500px;
+            width: 200px;
+            height: 100px;
+            /* background-color: aqua; */
+            animation: move2 3s forwards;
+        }
+        img{
+            animation: move1 0.5s steps(8) infinite;
+        }
+        @keyframes move1 {
+            from{
+                transform: translate(0);
+            }
+            to{
+                transform: translate(-100%);
+            }
+        }
+        @keyframes move2 {
+            to{
+                left: 1300px;
+            }
+        }   
+    </style>
+</head>
+<body>
+    <div>
+        <img src="img/bear.png" alt="">
+    </div>
+</body>
+</html>

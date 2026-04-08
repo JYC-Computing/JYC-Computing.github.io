@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-4">
+    <!-- p是padding 表示内边距 4对应1rem  1rem=16px -->
+    <h3 class="font-bold text-3xl mb-3" >待办事项</h3>
+    <input id="taskInput" type="text" class="border p-2" placeholder="输入任务">
+    <button onclick="addTask()" class="bg-blue-500 text-white p-2" >添加任务</button>
+    <ul id="taskList"></ul>
+    <!-- 因为用户输入添加到这 灵活 动态的 -->
+ 
+    <script>
+        
+        let taskId = 0
+        function deleteTask(id){
+            let item = document.getElementById('task-'+id)
+            item.remove()
+        }
+        //添加任务
+        function addTask(){
+            let input = document.getElementById('taskInput')
+            let teskText = input.value;
+            console.log(teskText)
+ 
+            let li = document.createElement('li')
+            //设置唯一的id
+            let currentID =  taskId++;
+            li.id = 'task-'+ currentID
+ 
+            let text = document.createTextNode(teskText)
+            li.className='m-2'
+            //创建删除按钮 绑定删除事件
+            let delBtn = document.createElement('button')
+            delBtn.textContent = '删除'
+            delBtn.className = 'text-red-500 ml-2'
+            delBtn.setAttribute('onclick','deleteTask('+currentID+')')
+            //组装元素
+            li.appendChild(text)
+            li.appendChild(delBtn)
+            document.getElementById('taskList').appendChild(li)
+            input.value = '';
+        }
+    </script>
+</body>
+</html>

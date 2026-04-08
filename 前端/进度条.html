@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .content{
+            line-height: 200px;
+            width: 500px;
+            margin: 50px auto;
+        }
+        #scroll{
+            position: fixed;
+            top: 0;
+            left: 0;
+            /* width: 100%; */
+            height: 20px;
+            background-color: palegreen;
+        }
+        #backToTop{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: palevioletred;
+            padding: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+        <div id="scroll"></div>
+        <div class="content">
+        <h1>滚动指示器示例</h1>
+        <p>向下滚动页面查看顶部的进度条。</p>
+        <p>这是一个展示滚动指示器功能的简单示例。</p>
+        <div >
+            <!-- 模拟长内容 -->
+            <p>滚动进度会实时显示在页面顶部的绿色进度条中。</p>
+            <p>进度条的宽度根据当前滚动位置与页面总高度的比例动态调整。</p>
+            <p>代码逻辑基于 window.scrollY 和 document.documentElement.scrollHeight 属性计算。</p>
+            <p>向下滚动...</p>
+            <p>继续滚动...</p>
+            <p>你已滚动了页面的一部分。</p>
+            <p>接近中间位置...</p>
+            <p>已到达中间位置。</p>
+            <p>继续向下滚动...</p>
+            <p>接近底部...</p>
+            <p>快到底部了...</p>
+            <p>恭喜，你已滚动到页面底部！</p>
+        </div>
+        <button id="backToTop">回到顶部</button>
+    <script>
+        var btn = document.getElementById('backToTop')
+        function updata(){
+            var winScroll = document.documentElement.scrollTop
+            //获取整个页面垂直滚动距离 当前滚动的距离
+            // console.log(winScroll)  
+            //吃了2碗饭
+ 
+            //总共饭量五碗饭
+            //计算页面可滚动的总高度 
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+            //document.documentElement.scrollHeight 获取整个页面的总高度（可视区域+隐藏的滚动区域）
+            //document.documentElement.clientHeight 获取浏览器视口的可视高度（不含滚动条 ）
+ 
+            //计算滚动百分比
+            var x = winScroll/height * 100
+            console.log(x)
+            document.getElementById('scroll').style.width = x + '%'
+            btn.style.display = window.scrollY > 200 ? 'block':'none'
+        }
+        
+        btn.onclick = function(){
+            window.scrollTo({top:0,behavior:"smooth"})
+        }
+        window.addEventListener('scroll',updata)
+    </script>
+</body>
+</html>

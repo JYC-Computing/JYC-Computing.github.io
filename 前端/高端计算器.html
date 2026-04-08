@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            margin-left: 27px;
+        }
+    </style>
+</head>
+<body>
+    <p>高端计算器</p>
+    <table border="1">
+        <tr>
+            <td>第一个数</td>
+            <td><input type="text" id="first"></td>
+        </tr>
+        <tr>
+            <td>第二个数</td>
+            <td><input type="text" id="twice"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button onclick="add()">+</button>
+                <button onclick="subtract()">-</button>
+                <button onclick="ride()">*</button>
+                <button onclick="devide()">/</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p id="result"></p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+ 
+<script>
+    //获取第一位数字
+    function getFirstNumber(){
+        var firstNumber = document.querySelector('#first').value
+        console.log(firstNumber)
+        return firstNumber
+    }
+ 
+    //获取第二位数字
+    function getTwiceNumber(){
+        var twiceNumber = document.querySelector('#twice').value
+        console.log(twiceNumber)
+        return twiceNumber
+    }
+    function add(){
+        var a = getFirstNumber()
+        var b = getTwiceNumber()
+        var re = Number(a)+Number(b)
+        console.log(re)
+        sendResult(re)
+    }
+    function subtract(){
+            var a = getFirstNumber()
+            var b = getTwiceNumber()
+            var re = a-b
+            console.log(re)
+            sendResult(re)
+        }
+    function ride(){
+            var a = getFirstNumber()
+            var b = getTwiceNumber()
+            var re = a*b
+            console.log(re)
+            sendResult(re)
+        }
+    function devide(){
+            var a = getFirstNumber()
+            var b = getTwiceNumber()
+            var re = a/b // re是结果
+            console.log(re)
+            sendResult(re)
+        }
+    //插入数据 获取dom 改变内容 
+    function sendResult(res){
+        var num = document.querySelector('#result')
+        num.innerHTML = res;
+    }
+ 
+    // 函数式编程的模块化拆分
+    // 1. 代码的可读性更高 职责清晰  不用一大段代码里面找 语义化强
+    // 2. 可维护性好 修改影响小 复用方便 
+    // 3. 可测试性更强 
+ 
+     
+</script>

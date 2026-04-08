@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: cadetblue;
+        }
+        .wrap{
+            margin: 100px auto;
+            width: 500px;
+            background-color: aliceblue;
+        }
+        .wrap h3{
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+        .wrap input{
+            width: 360px;
+            height: 40px;
+            padding-left: 10px;
+        }
+        .wrap>div{
+            text-align: center;
+            /* 不仅可以让文本居中 还可以使得行内 行内块元素水平居中  */
+        }
+        .wrap p{
+            height: 70px;
+            left: 70px;
+            text-align: center;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h3>登录</h3>
+        <div>
+            <input type="text" placeholder="账号">
+        </div>
+        <div>
+            <input type="text"placeholder="密码">
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+        <p>还没有账号 <a href="">注册</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://www.bilibili.com/">
+        <h2>用户注册</h2>
+        <input type="text" id="username" placeholder="用户名" name="username">
+        <input type="text" id="oassword" placeholder="密码" name="password">
+        <button>注册</button>
+        <p>账号5个以上的数字 密码至少一个字母开头，后面跟5到16个字母数字或下划线</p>
+    </form>
+    <script>
+        document.getElementById('form').addEventListener('submit',function(event)){
+            let username = document.getElementById('username').value
+            let password = document.getElementById('password').value
+            console.log(username,password)
+            if(username ==='' || password ===''){
+                event.preventDefault()
+                alert('用户名和密码不能为空')
+                return
+            }
+            var usernameReg = /\d{5,}/;
+            var passwordReg = /^[a-zA-Z]+[a-zA-Z0-9_]$/;
+            if(usernameReg.test(username) && passwordReg.test(password)){
+                alert('注册成功')
+            }else{
+                alert('格式错误')
+                event.preventDefault()
+            }
+           
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <img src="1.png" alt="">
+    <script>
+        var img = document.querySelector('img')
+        console.log(img)
+        var x = 0;
+        var y = 0;
+        document.documentElement.onkeydown = function(event){
+            console.log(event.keyCode)
+            var key = event.keyCode ;
+            switch(key){
+                case 37:
+                    x += -30;
+                    console.log('向左')
+                    img.setAttribute('src','4.png')
+                    img.style.transform= `translate(${x}px,${y}px)`
+                    break;
+                case 38:
+                    y += -30;
+                    console.log('向上')
+                    img.setAttribute('src','2.png')
+                    img.style.transform= `translate(${x}px,${y}px)`
+                    break;
+                case 39:
+                    x += 30;
+                    console.log('向右')
+                    img.setAttribute('src','3.png')
+                    img.style.transform= `translate(${x}px,${y}px)`
+                    break;
+                case 40:
+                    y += 30;
+                    console.log('向下')
+                    img.setAttribute('src','1.png')
+                    img.style.transform= `translate(${x}px,${y}px)`
+                    break;
+            }
+        }
+    </script>
+    
+</body>
+</html>

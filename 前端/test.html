@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="mx-auto p-4 max-w-3xl">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl mb-2 md:text-5xl font-bold text-blue-600">书籍搜索</h1>
+            <!-- md:text-5xl 在屏幕大于768px 字体大小5xl -->
+            <p></p>
+        </header>
+        <div class="mb-10">
+            <div class="flex flex-col sm:flex-row gap-3">
+                <!-- sm:flex-row 当屏幕大于640px 子元素水平排列 -->
+                <input  class="flex-1 px-5 rounded-full py-3 border border-gray-300 
+                focus:ring-2 focus:border-blue-500 focus:outline-none" type="text">
+                <button onclick="searching()" class=" hover:bg-blue-500 rounded-full bg-blue-500 text-white px-6 py-3 shadow-md hover:shadow-lg">
+                    <i class="fa fa-search"></i>
+                    <span>搜索</span>
+                </button>
+                <i class="fa fa-book absolute"></i>
+            </div>
+        </div>
+            <!-- 书籍列表 -->
+            <ul class="space-y-2 bg-white rounded-xl shadow-lg border p-4 ">
+                <!-- <li class="p-3 rounded-lg border hover:bg-blue-50 hover:translate-x-2  shadow-sm">
+                    <i class="fa fa-bookmark-o text-blue-400"></i>
+                    <span>坤坤</span>
+                </li> -->
+                <!-- 书籍项通过js动态生成 -->
+            </ul>
+    </div>
+     
+ 
+    <script>
+        var books = ["警世名言", "红楼梦", "百年孤独", "老人与海", "人生", "平凡的世界", "三国演义", "遥远的救世主", "钢铁是怎样炼成的", "白夜行", "魔鬼搭讪学", "童年", "白鹿原", "孟子", "解忧杂货铺", "飘", "嫌疑人X的献身", "活着",'吞噬星空','凡人修行'];
+ 
+        var ul = document.querySelector('ul');
+        var p = document.querySelector('p');
+         
+        //显示书籍列表和结果数量
+        function setul(arr){
+            p.innerHTML = '共'+arr.length+'条';
+            ul.innerHTML = '';
+            for(var i = 0 ; i<arr.length;i++){
+                ul.innerHTML += `<li class="p-3 rounded-lg border hover:bg-blue-50 hover:translate-x-2  shadow-sm">
+                    <i class="fa fa-bookmark-o text-blue-400"></i>
+                    <span>${arr[i]}</span>
+                </li>`
+            }
+        }
+        setul(books)
+ 
+        //搜索功能 
+        var ipsearch = document.querySelector('input')
+        function searching(){
+            var keyword = ipsearch.value;
+            console.log(keyword)
+            //清除输入框 
+            ipsearch.value = '';
+            var results = []
+            //搜索匹配的书籍 
+            for(var i = 0; i<books.length;i++){
+                if(books[i].indexOf(keyword) !== -1){
+                    results.push(books[i])
+                }
+                // 在数组books的第i个字符串元素中 查找keyword这个关键词首次出现的位置 如果找到 返回该位置的索引值  如果没找到 返回-1
+            }
+            console.log(results)
+            setul(results)
+            //显示搜索结果
+        }
+    </script>
+</body>
+</html>

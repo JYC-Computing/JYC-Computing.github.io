@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,ul{
+            margin: 0;
+            padding: 0;
+        }
+        .top{
+            height: 50px;
+            background-color: green;
+        }
+        .banner{
+            width: 990px;
+            height: 150px;
+            background-color: green;
+            margin: 10px auto;
+        }
+        .box{
+            width: 990px;
+            margin: 0 auto;
+            /* background-color: gray; */
+        }
+        li{
+            margin-right: 14px;
+            list-style: none;
+            float: left;
+            width: 237px;
+            height: 300px;
+            background-color: green;
+        }
+        .last{
+             margin-right: 0px;
+        }
+        .foot{
+            margin-top: 10px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="top"></div>
+    <div class="banner"></div>
+    <div class="box">
+        <!-- 为什么用ul 
+         1. 语义化更清晰 ul+li 代表一组相关列表项 而 div是无意义的通用容器 仅仅代表一个区块 无法体现出元素之间的关联性 和 列表性质
+         2. 提升可访问性 利于搜索引擎优化 
+         3. 团队协作 符合w3c规范的代码风格 -->
+         <!-- W3C 万维网联盟 制定web技术标准的国际组织 -->
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li class="last">4</li>
+            <div style="clear: both;"></div>
+        </ul>
+    </div>
+    <div class="foot"></div>
+</body>
+</html>
