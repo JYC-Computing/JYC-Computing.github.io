@@ -1,0 +1,473 @@
+/* --- 全局重置 --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    padding-top: 80px;
+}
+
+/* ============================================================
+   @keyframes 动画定义
+   ============================================================ */
+
+/* 轮播图：从下向上切换 */
+@keyframes slideUp {
+    0%   { transform: translateY(100%); opacity: 0; }
+    100% { transform: translateY(0);    opacity: 1; }
+}
+
+/* 登录按钮悬停：背景色渐变 */
+@keyframes btnColorShift {
+    0%   { background-color: #2980b9; }
+    50%  { background-color: #8e44ad; }
+    100% { background-color: #e74c3c; }
+}
+
+/* 图标悬停旋转 */
+@keyframes iconSpin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   头部：固定布局
+   ============================================================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.nav-menu a:hover {
+    color: #ff9800;
+}
+
+/* 图标动画：购物车、搜索悬停旋转 */
+.nav-icon {
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.nav-icon:hover {
+    color: #ff9800;
+    animation: iconSpin 0.6s linear;
+}
+
+/* 登录按钮悬停动画 */
+.login-btn-anim {
+    display: inline-block;
+    padding: 6px 18px;
+    background-color: #2980b9;
+    color: #fff !important;
+    border-radius: 4px;
+    margin-left: 20px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.login-btn-anim:hover {
+    animation: btnColorShift 0.6s ease forwards;
+    transform: scale(1.1);
+    color: #fff !important;
+}
+
+/* 登录状态显示 */
+.nav-menu .user-info {
+    display: none;
+    color: #ff9800;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.nav-menu .logout-btn {
+    display: none;
+    color: #ff6b6b;
+    margin-left: 10px;
+}
+
+/* ============================================================
+   遮罩层 + 登录对话框：父相子绝
+   ============================================================ */
+.mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+}
+
+.login-dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background: #fff;
+    border: 2px solid #ddd;
+    z-index: 2000;
+}
+
+.dialog-header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.dialog-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.close-btn:hover {
+    color: #ff9800;
+}
+
+.dialog-tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    border: none;
+    font-size: 14px;
+}
+
+.tab-btn.active {
+    background-color: #fff;
+    color: #2980b9;
+    border-bottom: 2px solid #2980b9;
+}
+
+.dialog-content {
+    padding: 20px;
+}
+
+.form-box {
+    display: none;
+}
+
+.form-box.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2980b9;
+}
+
+/* 表单提交按钮也加动画 */
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    animation: btnColorShift 0.6s ease forwards;
+    transform: scale(1.03);
+}
+
+/* 登录状态 */
+.logged-in .login-btn-anim {
+    display: none;
+}
+
+.logged-in .user-info,
+.logged-in .logout-btn {
+    display: inline-block !important;
+}
+
+/* ============================================================
+   轮播图
+   ============================================================ */
+.carousel {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: #222;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.carousel-item {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slideUp 0.6s ease;
+}
+
+.carousel-item span {
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.carousel-item:nth-child(1) { background: linear-gradient(135deg, #667eea, #764ba2); }
+.carousel-item:nth-child(2) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.carousel-item:nth-child(3) { background: linear-gradient(135deg, #11998e, #38ef7d); }
+
+/* ============================================================
+   主体布局：三栏
+   ============================================================ */
+.main-container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+}
+
+/* 左侧栏 */
+.sidebar-left {
+    position: relative;
+    width: 200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    height: fit-content;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+.sidebar-left h3 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.sidebar-left ul li {
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.sidebar-left ul li:hover {
+    color: #2980b9;
+}
+
+/* 中间栏 */
+.content-middle {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+.content-middle h3 {
+    margin-bottom: 15px;
+    border-left: 5px solid #2980b9;
+    padding-left: 10px;
+}
+
+/* ============================================================
+   热门图书动效：右移 + 阴影加深 + 放大
+   ============================================================ */
+.book-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.book-card {
+    border: 1px solid #eee;
+    padding: 10px;
+    text-align: center;
+    width: 180px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* 鼠标悬停图片：右移 + 放大 + 阴影加深 */
+.book-card:hover {
+    transform: translateX(6px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    border-color: #2980b9;
+}
+
+/* ============================================================
+   热门推荐
+   ============================================================ */
+.hot-recommend {
+    position: relative;
+    background-color: #e8f5e9;
+    padding: 20px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    border: 1px dashed #4caf50;
+}
+
+.rec-item {
+    float: left;
+    width: 45%;
+    margin: 0 2%;
+    background: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.hot-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-bottom-left-radius: 10px;
+}
+
+/* ============================================================
+   新书上市表格
+   ============================================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* ============================================================
+   右侧栏：固定定位
+   ============================================================ */
+.sidebar-right {
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    width: 200px;
+}
+
+.promo-box {
+    background-color: #ff5722;
+    color: white;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.promo-box button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #fff;
+    color: #ff5722;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 清除浮动 */
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
